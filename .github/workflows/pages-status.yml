@@ -1,0 +1,25 @@
+name: Pages status check
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: read
+
+jobs:
+  status:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Print GitHub Pages configuration
+        run: |
+          echo "--- Pages site ---"
+          curl -sS -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages"
+          echo
+          echo "--- Latest Pages build ---"
+          curl -sS -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages/builds/latest"
+          echo
