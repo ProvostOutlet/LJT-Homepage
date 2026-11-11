@@ -2,11 +2,8 @@
 name: Deploy Jekyll homepage to Pages
 
 on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["master"]
-
-  # Allows you to run this workflow manually from the Actions tab
+  # Allows deployment to be run manually from the Actions tab after GitHub Pages
+  # is enabled with GitHub Actions as its source.
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
